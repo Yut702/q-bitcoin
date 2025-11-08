@@ -111,7 +111,7 @@ $$
 $$
 
 In the case of **Angle Encoding**, the input features are embedded into rotation angles of single-qubit gates.
-A typical implementation uses a **chain of $R_y$–$R_z$ rotations** combined with entangling gates, forming the ansatz operator:
+A typical implementation uses a **chain of $R_y–R_z$ rotations** combined with entangling gates, forming the ansatz operator:
 
 $$
 U_{\text{ansatz}}(\mathbf{\theta}) =

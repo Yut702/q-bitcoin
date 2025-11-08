@@ -171,7 +171,7 @@ instead, it relies on **quantum inner products** that naturally encode complex s
 ## 🧩 Pipeline Summary
 
 <p align="center">
-  <img src="figures/pipeline.png" width="700" alt="QML Pipeline">
+  <img src="figures/Conclusion.png" width="700" alt="QML Pipeline">
 </p>
 
 The overall workflow integrates **three distinct quantum machine learning frameworks** —  

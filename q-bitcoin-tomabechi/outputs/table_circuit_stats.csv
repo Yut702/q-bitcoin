@@ -1,0 +1,5 @@
+metric,value
+n_qubits,6
+depth,6
+gate_u3,6
+gate_cx,5

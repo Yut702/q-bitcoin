@@ -107,7 +107,7 @@ They are implemented on real quantum hardware or simulators and optimized via cl
 Each circuit is constructed as a sequence of encoding and ansatz unitaries:
 
 $$
-|\psi(x; {\theta})\rangle = U_{\text{ansatz}}({\theta}) \, U_{\text{encode}}(x) \, |0\rangle^{\otimes n}.
+|\psi(x; {\theta})\rangle = U_{\text{ansatz}}({\theta}) \ U_{\text{encode}}(x) \ |0\rangle^{\otimes n}.
 $$
 
 In the case of **Angle Encoding**, the input features are embedded into rotation angles of single-qubit gates.

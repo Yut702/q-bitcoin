@@ -36,8 +36,8 @@ Each data point reflects the **premium price** determined by forward-looking mar
   <img src="figures/financial.png" width="600" alt="Key financial indicators">
 </p>
 
-We also analyze key financial indicators such as **volatility**, **kurtosis**, **jump intensity**, and **continuity**,  
-as well as model-level tunings including **number of qubits**, **circuit depth**, **normalization**, and **weighting schemes**.
+We used key financial indicators such as **volatility**, **kurtosis**, **jump intensity**, and **continuity** as features for model training,
+along with additional parameters including **number of qubits**, **circuit depth**, **normalization**, and **weighting schemes**.
 
 ---
 
@@ -49,12 +49,12 @@ where **amplitudes** and **phases** encode complex correlations that may be inac
 The general framework of our QML models can be expressed as:
 
 $$
-|\psi(t + \Delta t)\rangle = U(\mathbf{\theta}, t) |\psi(t)\rangle
+|\psi(t + \Delta t)\rangle = U(\theta, t) |\psi(t)\rangle
 $$
 
 where  
 - $$|\psi(t)\rangle$$ represents the quantum state encoding current financial features,  
-- $$U(\mathbf{\theta}, t)$$ is a parametrized quantum evolution (unitary), and  
+- $$U(\theta, t)$$ is a parametrized quantum evolution (unitary), and  
 - the measurement outcomes are mapped back to forecasted prices.
 
 This unified formalism encompasses all three methods described below.
@@ -110,7 +110,8 @@ $$
 |\psi(x; \mathbf{\theta})\rangle = U_{\text{ansatz}}(\mathbf{\theta}) \, U_{\text{encode}}(x) \, |0\rangle^{\otimes n}.
 $$
 
-The **ansatz** operator typically alternates between single-qubit rotations and entangling gates:
+In the case of **Angle Encoding**, the input features are embedded into rotation angles of single-qubit gates.
+A typical implementation uses a **chain of $R_y$–$R_z$ rotations** combined with entangling gates, forming the ansatz operator:
 
 $$
 U_{\text{ansatz}}(\mathbf{\theta}) =
@@ -170,19 +171,44 @@ instead, it relies on **quantum inner products** that naturally encode complex s
 ## 🧩 Pipeline Summary
 
 <p align="center">
+  <img src="figures/pipeline.png" width="700" alt="QML Pipeline">
+</p>
+
+The overall workflow integrates **three distinct quantum machine learning frameworks** —  
+**Quantum Reservoir Computing (QRC)**, **Variational Quantum Circuits (VQC)**, and **Quantum Kernel Methods (QKM)** —  
+each representing a different philosophy of quantum modeling.  
+Through these complementary approaches, we explored how quantum circuits can capture temporal and structural patterns in financial data.
+
+<p align="center">
   <img src="figures/QRC_bloch_animation.gif" width="400" alt="Gif of QRC bloch state">
 </p>
 
-1. **Data Preprocessing & Normalization**  
-   - Handle missing data, scaling, and differencing.  
-2. **Quantum Feature Encoding**  
-   - Angle or amplitude encoding schemes for each data point.  
-3. **Model Training**  
-   - QRC / VQC / QKM-based regression or forecasting models.  
-4. **Evaluation & Visualization**  
-   - Compare error metrics (RMSE, MAE), visualize surfaces and temporal trends.
+The animation above illustrates the **evolution of the quantum reservoir state on the Bloch sphere**,  
+where each input induces a new trajectory in Hilbert space.  
+Such dynamics serve as a nonlinear feature expansion that enriches the temporal representation of market behavior.
 
 ---
 
-## 🧮 Environment
+### 🔁 Workflow Overview
 
+1. **Data Preprocessing & Feature Engineering**  
+   - Handle missing entries, normalization, and differencing.  
+   - Use financial indicators — volatility, kurtosis, jump intensity, and continuity — as model features.  
+
+2. **Quantum Feature Encoding**  
+   - Apply angle- or amplitude-based embedding to map classical data into quantum states.  
+
+3. **Model Training and Evaluation**  
+   - Train QRC, VQC, and QKM models on the processed swaption dataset.  
+   - Compare performance against classical benchmarks.  
+
+---
+
+### 📊 Results and Insights
+
+Across multiple architectures, the quantum models demonstrated **distinctive feature-learning behavior**.  
+While their predictive accuracy did not yet surpass that of advanced classical machine learning algorithms,  
+they **outperformed simple linear extrapolation methods** for missing-value imputation and short-term forecasting.  
+
+These results highlight the **potential of QML to model complex financial dynamics** —  
+providing an early but promising glimpse of how quantum computation can augment future financial analytics.

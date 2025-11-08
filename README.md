@@ -15,7 +15,7 @@ The objectives are:
 By leveraging the ability of quantum circuits to **represent and process high-dimensional feature spaces**,  
 we implement and compare several QML paradigms — including **Quantum Reservoir Computing (QRC)**, **Variational Quantum Circuits (VQC)**, and **Quantum Kernel Methods (QKM)**.  
 
-This work is part of the **UTokyo Quantum Finance Frontier (QFF) 2025 Challenge**.
+This work is part of the **UTokyo Quantum Fall Fest (QFF) 2025 Challenge**.
 
 ---
 

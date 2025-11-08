@@ -84,7 +84,7 @@ where
 The **observable output** is obtained by linear projection:
 
 $$
-y_t = W_{\text{out}}^\top \mathbf{r}_t, \quad \mathbf{r}_t = \mathrm{Re}\!\left[\langle \psi_t | \hat{O} | \psi_t \rangle \right],
+y_t = W_{\text{out}}^\top {r}_t, \quad {r}_t = \mathrm{Re}\!\left[\langle \psi_t | \hat{O} | \psi_t \rangle \right],
 $$
 
 where $$\hat{O}$$ is a measurement operator and $$W_{\text{out}}$$ is a trainable weight vector (classically optimized).  
@@ -100,21 +100,21 @@ while maintaining training efficiency comparable to classical reservoir networks
   <img src="figures/VQA.png" width="300" alt="Variational Quantum Circuit">
 </p>
 
-VQCs are **parameterized quantum models** that iteratively optimize circuit parameters $$\mathbf{\theta}$$  
+VQCs are **parameterized quantum models** that iteratively optimize circuit parameters $${\theta}$$  
 to approximate an optimal mapping from input features to outputs.  
 They are implemented on real quantum hardware or simulators and optimized via classical feedback.
 
 Each circuit is constructed as a sequence of encoding and ansatz unitaries:
 
 $$
-|\psi(x; \mathbf{\theta})\rangle = U_{\text{ansatz}}(\mathbf{\theta}) \, U_{\text{encode}}(x) \, |0\rangle^{\otimes n}.
+|\psi(x; {\theta})\rangle = U_{\text{ansatz}}({\theta}) \, U_{\text{encode}}(x) \, |0\rangle^{\otimes n}.
 $$
 
 In the case of **Angle Encoding**, the input features are embedded into rotation angles of single-qubit gates.
 A typical implementation uses a **chain of $R_y–R_z$ rotations** combined with entangling gates, forming the ansatz operator:
 
 $$
-U_{\text{ansatz}}(\mathbf{\theta}) =
+U_{\text{ansatz}}({\theta}) =
 \prod_{l=1}^{L}
 \left[
 \prod_{i=1}^{n} R_y(\theta_{i}^{(l)}) R_z(\phi_{i}^{(l)}) 
@@ -132,8 +132,8 @@ enabling nonlinear transformations of encoded financial features.
 The **training objective** minimizes a loss between observed and predicted values:
 
 $$
-\mathcal{L}(\mathbf{\theta}) = 
-\bigl\| y_{\text{true}} - \langle \psi(x; \mathbf{\theta}) | \hat{O} | \psi(x; \mathbf{\theta}) \rangle \bigr\|^2.
+\mathcal{L}({\theta}) = 
+\bigl\| y_{\text{true}} - \langle \psi(x; {\theta}) | \hat{O} | \psi(x; {\theta}) \rangle \bigr\|^2.
 $$
 
 ---
@@ -157,10 +157,10 @@ Unlike classical RBF kernels, it can capture **nonlinear correlations and quantu
 The corresponding **Kernel Ridge Regression** predictor is:
 
 $$
-\hat{y} = \mathbf{k}(x)^\top (K + \lambda I)^{-1} \mathbf{y},
+\hat{y} = {k}(x)^\top (K + \lambda I)^{-1} {y},
 $$
 
-where $$\mathbf{k}(x) = [K(x_1, x), \dots, K(x_N, x)]^\top$$,  
+where $${k}(x) = [K(x_1, x), \dots, K(x_N, x)]^\top$$,  
 and $$\lambda$$ is a regularization coefficient.  
 
 This approach avoids parameterized optimization entirely —  
